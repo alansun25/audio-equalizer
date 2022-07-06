@@ -207,19 +207,19 @@ juce::AudioProcessorValueTreeState::ParameterLayout AudioEQAudioProcessor::creat
                                                            juce::NormalisableRange<float>(0.1f, 10.f, 0.05f, 1.f),
                                                            1.f));
     
-    juce::StringArray filterSteepnessChoices;
+    juce::StringArray slopeChoices;
     for (int i = 0; i < 4; i++) {
-        juce::String choice;
-        choice << (12 + i * 12);
-        choice << " db/Oct";
-        filterSteepnessChoices.add(choice);
+        juce::String slope;
+        slope << (12 + i * 12);
+        slope << " db/Oct";
+        slopeChoices.add(slope);
     }
     
     layout.add(std::make_unique<juce::AudioParameterChoice>(juce::ParameterID { "LowCut Slope", 1 },
-                                                            "LowCut Slope", filterSteepnessChoices, 0));
+                                                            "LowCut Slope", slopeChoices, 0));
     
     layout.add(std::make_unique<juce::AudioParameterChoice>(juce::ParameterID { "HighCut Slope", 1 },
-                                                            "HighCut Slope", filterSteepnessChoices, 0));
+                                                            "HighCut Slope", slopeChoices, 0));
 
     return layout;
 }
